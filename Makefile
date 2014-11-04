@@ -3,7 +3,7 @@ all: Figs JS
 .PHONY: all tar Figs JS web weball
 
 
-Figs: Figs/intercross.png Figs/lodcurve_insulin.png
+Figs: Figs/intercross.png Figs/lodcurve_insulin.png Figs/qtl_data.png
 
 JS: JS/lod_and_effect.js JS/lod_onetime_random.js JS/handle_stickies.js JS/em_alg.js JS/scatterplot.js JS/panelutil.js
 
