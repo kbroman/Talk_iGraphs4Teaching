@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<style>
+@import url(CSS/stack.css);
+@import url(CSS/d3-tip.css);
+@import url(CSS/kbroman_talk.css);
+@import url(CSS/panelutil.css);
+</style>
+
+<script charset="utf-8" type="text/javascript" src="JS/d3.min.js"></script>
+<script type="text/javascript" src="JS/d3.tip.js"></script>
+<script type="text/javascript" src="JS/slide_transition.js"></script>
+
+<title>Interactive graphics for teaching</title>
+</head>
+<body class="overview">
+
+
+
+<section class="titlepage">
+<h3 style="margin-top:-10px;" class="highlight">Interactive graphics
+for teaching</h3>
+
+<h4><a href="http://kbroman.org">Karl Broman</a></h4>
+<p class="nopadding">Biostatistics &amp; Medical Informatics, University of Wisconsin
+&ndash; Madison</p>
+
+<p class="nopadding"><code>
+<a href="http://kbroman.org" class="gray">kbroman.org</a><br>
+<a href="https://github.com/kbroman" class="gray">github.com/kbroman</a><br>
+<a href="https://twitter.com/kwbroman" class="gray">@kwbroman</a>
+</code></p>
+
+<p class="nopadding"><font class="gray">slides</a>: <code><a href="http://www.biostat.wisc.edu/~kbroman/presentations/iGraphs4Teaching">bit.ly/Bro2014-11b</a></code></font></p>
+
+<p class="codelink" style="cursor:pointer;" id="remove_stickies">Remove stickies</p>
+
+<img style="position:fixed;bottom: 30px; right:40px; z-index: -1;" width="150px" src="Figs/cc-zero.png" />
+
+<script type="text/javascript" src="JS/handle_stickies.js"></script> <!-- Remove stickies -->
+
+
+<aside>
+These are slides for a talk I&rsquo;m giving
+at a <a href="http://delta.wisc.edu">Delta Program</a> <a
+href="http://delta.wisc.edu/events/roundtable.html">Round Table</a> on
+20 Nov 2014.<br><br>
+
+Click on the link at the bottom-left to remove these
+notes.<br><br>
+
+These slides were tested for Chrome on a Mac and might look terrible
+in some browsers.
+</aside>
+
+</section>
+
+
+
+
+<section>
+
+<h3>Inbred mice</h3>
+
+<img style="position:fixed;bottom: 0px; left:0px; z-index: -1;" width="1280px" src="Figs/inbredmice.jpg" />
+
+<aside>
+A brief aside to introduce my own research.<br><br>
+
+I focus on genetics problems, and particularly on mouse genetics.<br><br>
+
+I think these are <a
+href="http://jaxmice.jax.org/strain/000689.html">SWR mice</a>; the
+photo is from <a
+href="http://cals.ncsu.edu/genetics/index.php/people/david-threadgill/">David
+Threadgill</a>.
+</aside>
+
+<p class="pg">3</p></section>
+
+
+
+
+
+
+<section>
+
+<h3>Human vs mouse</h3>
+
+<img style="position:fixed;top: 300px; left:120px; z-index: -1;" height="500px" src="Figs/da-vinci-man.jpg" />
+
+<img style="position:fixed;top: 300px; right:120px; z-index: -1;" height="500px" src="Figs/vitruvian_mouse.jpg" />
+
+<div style="position:fixed;bottom: 120px; right:120px;font-size:24px"><a href="http://www.daviddeen.com"><code>daviddeen.com</code></a></div>
+
+<aside>
+Mice are not humans, but you can learn a great deal about human
+biology and disease from mice.<br><br>
+
+The figure on the right is from <a
+href="http://www.daviddeen.com">David Deen</a>.
+</aside>
+<p class="pg">4</p></section>
+
+
+
+
+
+
+<section>
+
+<h3>Intercross</h3>
+
+<img src="Figs/intercross.png" />
+
+<aside>
+The main problem I tackle is to try to identify genes that underlie
+phenotypic variation.<br><br>
+
+The basic experiment I consider is an experimental cross: we start
+with two inbred strains that differ in the phenotype and perform a
+couple of generations of breeding to mix up the genomes.<br><br>
+
+We gather phenotype data on the progeny, along with genome-wide genotype
+data, and we seek to identify genomic regions for which genotype is
+associated with phenotype. We call such regions quantitative trait
+loci (QTL): genetic loci that influence a quantitative trait.
+</aside>
+<p class="pg">5</p></section>
+
+
+
+
+
+
+<section>
+
+<h3>Genome scan for QTL</h3>
+
+<img src="Figs/lodcurve_insulin.png" />
+
+<aside>
+The simplest analysis is to do a statistical test at each locus in the
+genome, to assess the association between genotype and
+phenotype.<br><br>
+
+We measure the association with a LOD score. LOD scores are log<sub>10</sub>
+likelihood ratios &emdash; a transformation of the F statistic from
+ANOVA. The details aren&rsquo;t
+important. The key is that large LOD scores indicate evidence for an
+association.<br><br>
+
+It is important to account for the scan across the genome. The dashed
+horizontal line is a threshold for statistical significance. If there
+were no association between genotype and phenotype, there&rsquo;d still be a
+5% chance of a LOD score that big <font class="highlight">somewhere</font> in the genome.
+</aside>
+<p class="pg">6</p></section>
+
+
+
+
+
+<section>
+
+<h3>Genome scan for QTL</h3>
+
+<img src="Figs/lodcurve_insulin_with_effects.png" />
+
+<aside>
+Underneath each of these peaks is an association between genotype and
+phenotype: If you group the mice by genotype at that location, you&rsquo;ll
+see a difference in the average phenotype among the groups.<br><br>
+
+The BB, BR, and RR indicate the three different genotypes, as these
+data concern a cross between two strains labeled B and R.
+</aside>
+<p class="pg">6</p></section>
+
+
+
+
+
+
+<section>
+
+<h3>Genome-scale phenotypes</h3>
+
+<img height=700 class="indent" src="Figs/mouse_on_chips.png" />
+
+<aside>
+My data visualizations have been pretty pedestrian. But in the past
+decade, I&rsquo;ve come to be swamped with data, and I&rsquo;m just beginning to
+come to grips with that.<br><br>
+
+This is a picture of a pile of gene expression arrays. More and more,
+we&rsquo;re seeing genome-scale phenotype information. For example, in
+one of my collaborations, we have data on 500 mice, each with gene
+expression microarrays for 6 different tissues.<br><br>
+
+You&rsquo;d think that with such high-dimensional data, we&rsquo;d be
+making a lot more graphs. But there&rsquo;s a tendency actually to
+make <em>fewer</em> graphs, or even <em>no</em> graphs. It&rsquo;s
+hard to look at 500 histograms, so why bother?
+</aside>
+<p class="pg">7</p></section>
+
+
+
+
+
+
+
+<section>
+<h3>Why? &nbsp; <font class="lowlight">people are busy</font></h3>
+
+<div id="lod_and_effect" class="fig"></div>
+
+<aside>
+We know we should not rely solely on summary statistics (like the LOD
+score), but if it takes an extra step to plot the underlying details,
+we tend not to do it, or at least not so much as we should.<br><br>
+
+I&rsquo;ve come to the conclusion that <em>every</em> graph could be
+improved with interactivity. You at least want tooltips.<br><br>
+
+The curves at the top are the same LOD curves we saw before. The LOD
+score is a measure of association between genotype and phenotype.<br><br>
+
+Click on a chromosome in the top panel to see a detailed view in the
+lower-left panel.  Click on a marker in the lower-left panel to see
+effect estimates and raw data on the right.  Hover over things on the
+right to get some further information.
+</aside>
+
+<p class="codelink">
+<a href="Coffee/lod_and_effect.coffee" class="gray">code</a> |
+<a href="Data/insulinlod.json" class="gray">data</a></p>
+
+<script type="text/javascript" src="JS/lod_and_effect.js"></script>
+<p class="pg">13</p></section>
+
+
+
+
+<section>
+
+<h3>Why? &nbsp; <font class="lowlight">teaching</font></h3>
+
+<div id="lod_onetime_random_fig" style="margin-left:-30px;"></div>
+
+<p class="codelink">
+<a href="Coffee/lod_onetime_random.coffee" class="gray">code</a> |
+<a href="Data/onetime_random.json" class="gray">data</a></p>
+
+
+<script type="text/javascript" src="JS/lod_onetime_random.js"></script>
+
+<aside>
+Interactive graphs are incredibly valuable educational tools.<br><br>
+
+You can only show so many static graphs, and it can be a big step to get
+students to make more, on their own.<br><br>
+
+Interactive graphs can be a big help to build students&rsquo; intution
+and understanding, both as a demonstration, and as a tool that they
+can play with.<br><br>
+
+This is an illustration of permutation test: Click the green button to shuffle
+the phenotypes and re-draw the LOD curves.
+</aside>
+
+<p class="pg">15</p></section>
+
+
+<section>
+
+<h3>Why? &nbsp; <font class="lowlight">teaching</font></h3>
+
+<div id="em_alg" class="qtlcharts" style="margin-left:130px;"></div>
+
+<p class="codelink">
+<a href="Coffee/em_alg.coffee" class="gray">code</a> |
+<a href="Data/em_alg_data.json" class="gray">data</a></p>
+
+
+<script type="text/javascript" src="JS/scatterplot.js"></script>
+<script type="text/javascript" src="JS/panelutil.js"></script>
+<script type="text/javascript" src="JS/em_alg.js"></script>
+
+<aside> Here&rsquo;s another teaching example, illustrating the EM algorithm
+in QTL mapping.<br><br>
+
+It&rsquo;s a plot of phenotype vs conditional genotype probabilities at each
+iteration of the EM algorithm. Each point is an individual; pink line
+segments are at the current estimated averages.<br><br>
+
+Click on &ldquo;Next&rdquo; to go to next iteration and &rdquo;Back&ldquo; to go back. Hover
+over points to see the prior QTL genotype probabilities; hover over
+line segments to see estimated averages.
+</aside>
+
+<p class="pg">16</p></section>
+
+
+
+
+
+<section nopadding>
+<h3><a href="http://d3js.org">D3</a> is awesome!</h3>
+
+<div id="learnd3" class="medtop">
+<p>You <font class="darkgray">just</font> need to learn html, css, svg, and javascript.</p>
+<p id="dotenter" style="opacity:0;">And don&rsquo;t forget <code>.enter()</code></p>
+</div>
+
+<div id="collision" style="position:fixed;top:-10px;left:-50px;width:1280px;height:960px;">
+</div>
+
+<div style="position:fixed;bottom:10px;left:10px;">
+<code style="font-size:28px;"><a href="http://mbostock.github.io/d3/talk/20111018/collision.html">http://mbostock.github.io/d3/talk/20111018/collision.html</a></code></div>
+
+<aside>
+I&rsquo;m using <a href="http://d3js.org">D3</a>, a javascript
+library for data visualization.  (D3 stands for &ldquo;data-driven
+documents.&rdquo;)<br><br>
+
+This is one of the images that convinced me that I wanted to learn D3.
+There are lots of additional examples at the <a
+href="https://github.com/mbostock/d3/wiki/Gallery">D3
+gallery</a>.<br><br>
+
+There&rsquo;s a ton to learn, and it&rsquo;s rather forbidding (and much of it is
+dull).<br><br>
+
+My most common mistake is to forget to include <code>.enter()</code>.
+No error is given, but nothing shows up in the plot.
+</aside>
+<p class="pg">20</p></section>
+<script type="text/javascript" src="JS/collision.js"></script>
+
+
+
+
+
+
+<section>
+<h3><a href="http://jsfiddle.net">JSFiddle</a> is awesome!</h3>
+
+<a href="http://jsfiddle.net/kbroman/v4qhh/5">
+    <img height=700 style="position:fixed;bottom:50px;left:100px;" src="Figs/jsfiddle.png">
+</a>
+
+<aside>
+D3 can be forbidding, but just start making stuff. It&rsquo;s fun, and
+eventually it&rsquo;s productive.<br><br>
+
+Learn to use your browser&rsquo;s developer tools. When something goes
+wrong, typically you just get a blank screen. The developer tools show
+the error messages, and you can test things on-the-fly.<br><br>
+
+<a href="http://jsfiddle.net">jsfiddle</a> is a huge help for learning
+javascript and D3. There are separate boxes for html, css, javascript,
+and the result.
+</aside>
+<p class="pg">21</p></section>
+
+
+
+
+
+<section>
+<h3><a href="http://coffeescript.org">Coffeescript</a> is awesome!</h3>
+
+<div id="coffee" class="medtop">
+<p><code>blob.attr("x", <font class="highlight">(d) -> d.x</font>)</code><br><br>
+<code>height = options<font class="highlight">?.</font>height ? 500</code>
+</p>
+</div>
+
+<aside>
+(I think maybe I&rsquo;ve seen the <a
+href="http://www.lego.com/en-us/movie">Lego Movie</a> too many
+times.)<br><br>
+
+I&rsquo;m using <a href="http://coffescript.org">CoffeeScript</a>
+rather than javascript. It gets translated to javascript, and
+it&rsquo;s a much nicer language.<br><br>
+
+Particularly nice are the light-weight anonymous
+functions. You&rsquo;ll be writing <em>a lot</em> of anonymous
+functions in D3.<br><br>
+
+Also, there&rsquo;s a simple syntax for handling <code>null</code>
+values, for things like options.<br><br>
+</aside>
+<p class="pg">22</p></section>
+
+
+<section>
+<h3><a href="http://coffeescript.org">Coffeescript</a> is awesome!</h3>
+
+<div id="coffee" class="medtop">
+<p><code>blob.attr("x", <font class="highlight">(d) -> d.x</font>)</code><br><br>
+<code>height = options<font class="highlight">?.</font>height ? 500</code>
+</p>
+</div>
+
+<a href="http://jsfiddle.net/kbroman/cfscr/94">
+    <img height=600 style="position:fixed;bottom:10px;left:200px;" src="Figs/jsfiddle_coffee.png">
+</a>
+
+<aside>
+And you can use <a href="http://jsfiddle.net">jsfiddle</a> with
+CoffeeScript.
+</aside>
+<p class="pg">22</p></section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section>
+<h3>Summary</h3>
+
+<ul class="tight">
+  <li><font class="highlight">Interactive</font> graphics
+  require effort, but they</li>
+
+      <ul class="lowlight">
+        <li>Facilitate exploration</li>
+        <li>Are great collaborative tools</li>
+        <li>Enable summaries with access to the details</li>
+        <li>Are great for teaching</li>
+      </ul>
+
+  <li>Visualizations must be <font
+  class="highlight">tailored</font> to the data and
+  questions</li>
+
+  <li><a href="http://d3js.org" class="highlight">D3</a> is rather low level, but it</li>
+      <ul class="lowlight">
+        <li>Is totally flexible</li>
+        <li>Provides hours of enjoyment</li>
+        <li>Can provide other hours of frustration</li>
+      </ul>
+
+  <li><a href="http://rstudio.com">RStudio</a>&rsquo;s <a
+  href="http://shiny.rstudio.com">Shiny</a> and <a
+  href="http://ggvis.rstudio.com">ggvis</a> are also really exciting.</li>
+
+  <li>Write modular, reusable tools rather than scripts</li>
+
+  <li><a href="http://kbroman.github.io/qtlcharts" class="hilight">R/qtlcharts</a>,
+  an R package for interactive graphs for QTL data</li>
+
+</ul>
+
+<aside>
+It&rsquo;s always good to have a summary slide with your key points.
+</aside>
+<p class="pg">28</p></section>
+
+
+
+<section>
+
+<div class="hugetop">
+<p class="large"><font class="gray">slides</a>: &nbsp;
+<code><a href="http://www.biostat.wisc.edu/~kbroman/presentations/iGraphs4Teaching">bit.ly/Bro2014-11b</a></code>
+&nbsp; <img style="vertical-align:middle;" width="150px" src="Figs/cc-zero.png" /></p>
+
+
+<p class="large"><code>
+<a href="http://kbroman.org" class="gray">kbroman.org</a><br>
+</code></p>
+
+<p class="large"><code>
+<a href="https://github.com/kbroman" class="gray">github.com/kbroman</a><br>
+</code></p>
+
+<p class="large"><code>
+<a href="https://twitter.com/kwbroman" class="gray">@kwbroman</a>
+</code></p>
+
+<p class="large"><code>
+<a href="https://github.com/kbroman/qtlcharts" class="gray">bit.ly/qtlcharts</a>
+</code></p>
+
+</div>
+
+<aside>
+This is where to find me.<br><br>
+
+In particular, you can find all of my papers, talks, and software.
+</aside>
+<p class="pg">31</p></section>
+
+
+
+<script type="text/javascript" src="JS/stack.v0.js"></script>
+</body>
+</html>
