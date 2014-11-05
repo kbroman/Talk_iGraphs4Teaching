@@ -4,8 +4,7 @@ These are slides for a talk that I will give at a
 [Delta Program](http://delta.wisc.edu) [Round Table](http://delta.wisc.edu/events/roundtable.html)
 on 20 Nov 2014.
 
-See them in action [here](https://www.biostat.wisc.edu/~kbroman/presentations/iGraphs4Teaching)
-(_eventually_).
+See them in action [here](https://www.biostat.wisc.edu/~kbroman/presentations/iGraphs4Teaching).
 
 ---
 
