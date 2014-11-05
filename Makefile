@@ -30,6 +30,7 @@ weball: JS Figs
 	scp CSS/* broman-9.biostat.wisc.edu:public_html/presentations/iGraphs4Teaching/CSS/
 	scp Figs/*.png broman-9.biostat.wisc.edu:public_html/presentations/iGraphs4Teaching/Figs/
 	scp Figs/*.jpg broman-9.biostat.wisc.edu:public_html/presentations/iGraphs4Teaching/Figs/
+	scp Figs/Mtb/*.png broman-9.biostat.wisc.edu:public_html/presentations/iGraphs4Teaching/Figs/Mtb/
 
 tar: all
 	cd ..;tar czhf iGraphs4Teaching.tgz iGraphs4Teaching/[A-Za-z]*
