@@ -6,7 +6,7 @@ R_OPTS=--no-save --no-restore --no-init-file --no-site-file
 
 Figs: Figs/intercross.png Figs/lodcurve_insulin.png Figs/qtl_data.png Figs/Mtb/mcmc01.png Figs/Mtb/mut1.png
 
-JS: JS/lod_and_effect.js JS/lod_onetime_random.js JS/handle_stickies.js JS/em_alg.js JS/scatterplot.js JS/panelutil.js
+JS: JS/lod_and_effect.js JS/lod_onetime_random.js JS/handle_stickies.js JS/em_alg.js JS/scatterplot.js JS/panelutil.js JS/corr_w_scatter.js
 
 Figs/%.png: R/%.R
 	cd R;R CMD BATCH ${R_OPTS} $(<F)
