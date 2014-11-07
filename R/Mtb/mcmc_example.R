@@ -1,7 +1,8 @@
+library(broman)
 source("mtb_analysis.R")
-red <- "#FF4136"
-green <- "#2ECC40"
-blue <- "#39CCCC"
+red <- brocolors("crayons")["Blush"]
+green <- brocolors("crayons")["Cornflower"]
+blue <- brocolors("crayons")["Apricot"]
 
 png("../../Figs/Mtb/mcmc01.png",height=700,width=1032,res=108,pointsize=14,bg="transparent")
 par(fg="white",mar=c(0.1,0.1,0.1,0.1))

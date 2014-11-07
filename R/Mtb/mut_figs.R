@@ -1,8 +1,11 @@
-red <- "#FF4136"
-green <- "#2ECC40"
-blue <- "#39CCCC"
-orange <- "#FF851B"
-purple <- "#C11DD9"
+library(broman)
+color <- brocolors("crayons")[c("Cornflower", "Blush")]
+
+red <- brocolors("crayons")["Blush"]
+green <- brocolors("crayons")["Cornflower"]
+blue <- brocolors("crayons")["Apricot"]
+orange <- brocolors("crayons")["Mountain Meadow"]
+purple <- brocolors("crayons")["Wisteria"]
 
 loc <- c(0.39,0.55,0.89,1.94,2.05,2.93,3.05,3.25,
          3.90,4.05,4.19,4.9,5.72,5.89)
@@ -11,12 +14,6 @@ loc2 <- c(1.33,1.66,2.44,2.62,5.22,6.22)
 plot.genome <-
 function(x,y,r=10,LOC=loc,LOC2=loc2)
 {
-    red <- "#FF4136"
-    green <- "#2ECC40"
-    blue <- "#39CCCC"
-    orange <- "#FF851B"
-    purple <- "#C11DD9"
-
   z <- seq(0,2*pi,len=501)
   lines(r*sin(z)+x,r*cos(z)+y)
 
@@ -45,8 +42,8 @@ plot(0,0,type="n",xlab="",ylab="",xaxt="n",yaxt="n",bty="n",
      xlim=c(0,100),ylim=c(-1,69))
 plot.genome(5,34,r=5)
 
-text(0,16,"Red = essential", col=red, cex=1.4, font=2, adj=c(0,0.5))
-text(0,12,"Green = non-essential", col=green, cex=1.4, font=2, adj=c(0,0.5))
+text(0,16,"essential", col=red, cex=1.4, font=2, adj=c(0,0.5))
+text(0,12,"non-essential", col=green, cex=1.4, font=2, adj=c(0,0.5))
 dev.off()
 
 loc3 <- c(loc,loc2)
@@ -58,8 +55,8 @@ plot(0,0,type="n",xlab="",ylab="",xaxt="n",yaxt="n",bty="n",
      xlim=c(0,100),ylim=c(-1,69))
 plot.genome(5,34,r=5)
 
-text(0,16,"Red = essential", col=red, cex=1.4, font=2, adj=c(0,0.5))
-text(0,12,"Green = non-essential", col=green, cex=1.4, font=2, adj=c(0,0.5))
+text(0,16,"essential", col=red, cex=1.4, font=2, adj=c(0,0.5))
+text(0,12,"non-essential", col=green, cex=1.4, font=2, adj=c(0,0.5))
 
 arrows(15,34,25,34,lwd=3,col=purple,length=0.2)
 text(18,43,"Create random\nsingle-insertion\nmutants",cex=1.4,col=purple,font=2)
@@ -72,8 +69,8 @@ plot(0,0,type="n",xlab="",ylab="",xaxt="n",yaxt="n",bty="n",
      xlim=c(0,100),ylim=c(-1,69))
 plot.genome(5,34,r=5)
 
-text(0,16,"Red = essential", col=red, cex=1.4, font=2, adj=c(0,0.5))
-text(0,12,"Green = non-essential", col=green, cex=1.4, font=2, adj=c(0,0.5))
+text(0,16,"essential", col=red, cex=1.4, font=2, adj=c(0,0.5))
+text(0,12,"non-essential", col=green, cex=1.4, font=2, adj=c(0,0.5))
 
 arrows(15,34,25,34,lwd=3,col=purple,length=0.2)
 text(18,43,"Create random\nsingle-insertion\nmutants",cex=1.4,col=purple,font=2)
@@ -96,8 +93,8 @@ plot(0,0,type="n",xlab="",ylab="",xaxt="n",yaxt="n",bty="n",
      xlim=c(0,100),ylim=c(-1,69))
 plot.genome(5,34,r=5)
 
-text(0,16,"Red = essential", col=red, cex=1.4, font=2, adj=c(0,0.5))
-text(0,12,"Green = non-essential", col=green, cex=1.4, font=2, adj=c(0,0.5))
+text(0,16,"essential", col=red, cex=1.4, font=2, adj=c(0,0.5))
+text(0,12,"non-essential", col=green, cex=1.4, font=2, adj=c(0,0.5))
 
 arrows(15,34,25,34,lwd=3,col=purple,length=0.2)
 text(18,43,"Create random\nsingle-insertion\nmutants",cex=1.4,col=purple,font=2)
@@ -124,8 +121,8 @@ plot(0,0,type="n",xlab="",ylab="",xaxt="n",yaxt="n",bty="n",
      xlim=c(0,100),ylim=c(-1,69))
 plot.genome(5,34,r=5)
 
-text(0,16,"Red = essential", col=red, cex=1.4, font=2, adj=c(0,0.5))
-text(0,12,"Green = non-essential", col=green, cex=1.4, font=2, adj=c(0,0.5))
+text(0,16,"essential", col=red, cex=1.4, font=2, adj=c(0,0.5))
+text(0,12,"non-essential", col=green, cex=1.4, font=2, adj=c(0,0.5))
 
 arrows(15,34,25,34,lwd=3,col=purple,length=0.2)
 text(18,43,"Create random\nsingle-insertion\nmutants",cex=1.4,col=purple,font=2)
@@ -161,8 +158,8 @@ plot(0,0,type="n",xlab="",ylab="",xaxt="n",yaxt="n",bty="n",
      xlim=c(0,100),ylim=c(-1,69))
 plot.genome(5,34,r=5)
 
-text(0,16,"Red = essential", col=red, cex=1.4, font=2, adj=c(0,0.5))
-text(0,12,"Green = non-essential", col=green, cex=1.4, font=2, adj=c(0,0.5))
+text(0,16,"essential", col=red, cex=1.4, font=2, adj=c(0,0.5))
+text(0,12,"non-essential", col=green, cex=1.4, font=2, adj=c(0,0.5))
 
 arrows(15,34,25,34,lwd=3,col=purple,length=0.2)
 text(18,43,"Create random\nsingle-insertion\nmutants",cex=1.4,col=purple,font=2)
