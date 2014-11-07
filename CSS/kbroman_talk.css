@@ -299,16 +299,16 @@ section:nth-child(odd) aside {
 }
 
 ul ul {
-  list-style-type: none;  
-}  
-ul ul li:before {  
+  list-style-type: none;
+}
+ul ul li:before {
   content: "\2013  ";
-}  
+}
 
 ul ul.nodash {
   list-style-type: none;
 }
-ul ul.nodash li:before {  
+ul ul.nodash li:before {
   content: "";
 }
 
@@ -342,3 +342,11 @@ img.indent {
     margin-left: 100px;
 }
 
+p.remove_stickies{
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    color: rgb(200,200,200);
+    font-size: 18px;
+    cursor:pointer;
+}
