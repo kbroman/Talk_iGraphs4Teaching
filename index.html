@@ -428,19 +428,22 @@ href="http://www.biochem.wisc.edu/faculty/attie/">Alan Attie</a>.
 
 <section>
 
-<h3>Summary + details</h3>
+<h3>Heatmap of correlation matrix</h3>
 
 <div id="corr_w_scatter" style="margin-left:-50px;"></div>
 
 <script type="text/javascript" src="JS/corr_w_scatter.js"></script>
 
 <aside>
-Heatmaps of things like correlation matrices can be quite useful, but
-they are often hard to read.  It&rsquo;s nice to be able to read off the
-values by hovering.<br/><br/>
+Interactive graphs allow an overall summary plot to be connected to
+the underlying details. While my initial aim, in developing such
+graphs, had been towards research, I quickly learned that such graphs
+are valuable teaching tools.<br/><br/>
 
-Even better: to be able to click on a pixel and view the corresponding
-scatterplot.<br/><br/>
+This is a heatmap of a correlation matrix; red indicates a strong
+positive association; blue indicates a strong negative
+correlation. Hover over the matrix to read off the values; click on a
+pixel to view the corresponding scatterplot.<br/><br/>
 
 This is a set of genes whose expression values are associated with
 genotype at a common locus. In the scatterplots, the points are colored
@@ -461,20 +464,20 @@ by genotype at that locus.
 <div id="lod_and_effect" class="fig"></div>
 
 <aside>
-We know we should not rely solely on summary statistics (like the LOD
-score), but if it takes an extra step to plot the underlying details,
-we tend not to do it, or at least not so much as we should.<br/><br/>
+This is an interactive version of the static genome scan plot I showed
+earlier.</br></br>
 
-I&rsquo;ve come to the conclusion that <em>every</em> graph could be
-improved with interactivity. You at least want tooltips.<br/><br/>
-
-The curves at the top are the same LOD curves we saw before. The LOD
-score is a measure of association between genotype and phenotype.<br/><br/>
-
+The curves at the top are the same LOD curves we saw before. (The LOD
+score is a measure of association between genotype and phenotype.)
 Click on a chromosome in the top panel to see a detailed view in the
 lower-left panel.  Click on a marker in the lower-left panel to see
 effect estimates and raw data on the right.  Hover over things on the
-right to get some further information.
+right to get some further information.<br/><br/>
+
+With static charts, I was restricted to providing one or two examples
+of the genotype:phenotype association. With the interactive graph, I
+can show all possible associations. This helps develop students&rsquo;
+understanding.
 </aside>
 
 <p class="codelink">
@@ -485,6 +488,22 @@ right to get some further information.
 <p class="pg">12</p></section>
 
 
+<section>
+
+<h3>Permutation test</h3>
+
+<img style="margin-top:100px;" src="Figs/permtest.png"/>
+
+<aside>
+An important procedure, for assessing the support for QTL, is the
+permutation test: we permute the trait data relative to the genotype
+data and look at the distribution of the genome-wide maximum LOD
+score.<br/><br/>
+
+For many years, I would use this simple diagram to illustrate my
+explanation of the permutation test.
+</aside>
+<p class="pg">13</p></section>
 
 
 <section>
@@ -501,20 +520,19 @@ right to get some further information.
 <script type="text/javascript" src="JS/lod_onetime_random.js"></script>
 
 <aside>
-Interactive graphs are incredibly valuable educational tools.<br/><br/>
+Even better, as an illustration of the permutation test, is to show
+results of actual permutations. Click the green button to shuffle
+the phenotypes and re-draw the LOD curves.<br/><br/>
 
 You can only show so many static graphs, and it can be a big step to get
 students to make more, on their own.<br/><br/>
 
 Interactive graphs can be a big help to build students&rsquo; intution
 and understanding, both as a demonstration, and as a tool that they
-can play with.<br/><br/>
-
-This is an illustration of permutation test: Click the green button to shuffle
-the phenotypes and re-draw the LOD curves.
+can play with.
 </aside>
 
-<p class="pg">13</p></section>
+<p class="pg">14</p></section>
 
 
 <section>
@@ -532,7 +550,8 @@ the phenotypes and re-draw the LOD curves.
 <script type="text/javascript" src="JS/panelutil.js"></script>
 <script type="text/javascript" src="JS/em_alg.js"></script>
 
-<aside> Here&rsquo;s another teaching example, illustrating the EM algorithm
+<aside>
+Here&rsquo;s another teaching example, illustrating the EM algorithm
 in QTL mapping.<br/><br/>
 
 It&rsquo;s a plot of phenotype vs conditional genotype probabilities at each
@@ -544,7 +563,7 @@ over points to see the prior QTL genotype probabilities; hover over
 line segments to see estimated averages.
 </aside>
 
-<p class="pg">14</p></section>
+<p class="pg">15</p></section>
 
 
 
@@ -563,7 +582,7 @@ easier. Or incorporate others&rsquo; figures.<br/><br/>
 
 I also focus on things with dual uses (e.g., for both my teaching and
 my research).
-</aside> <p class="pg">15</p></section>
+</aside> <p class="pg">16</p></section>
 
 
 
@@ -599,7 +618,7 @@ dull).<br/><br/>
 My most common mistake is to forget to include <code>.enter()</code>.
 No error is given, but nothing shows up in the plot.
 </aside>
-<p class="pg">16</p></section>
+<p class="pg">17</p></section>
 <script type="text/javascript" src="JS/collision.js"></script>
 
 
@@ -626,7 +645,7 @@ the error messages, and you can test things on-the-fly.<br/><br/>
 javascript and D3. There are separate boxes for html, css, javascript,
 and the result.
 </aside>
-<p class="pg">17</p></section>
+<p class="pg">18</p></section>
 
 
 
@@ -642,10 +661,6 @@ and the result.
 </div>
 
 <aside>
-(I think maybe I&rsquo;ve seen the <a
-href="http://www.lego.com/en-us/movie">Lego Movie</a> too many
-times.)<br/><br/>
-
 I&rsquo;m using <a href="http://coffescript.org">CoffeeScript</a>
 rather than javascript. It gets translated to javascript, and
 it&rsquo;s a much nicer language.<br/><br/>
@@ -657,7 +672,7 @@ functions in D3.<br/><br/>
 Also, there&rsquo;s a simple syntax for handling <code>null</code>
 values, for things like options.<br/><br/>
 </aside>
-<p class="pg">18</p></section>
+<p class="pg">19</p></section>
 
 
 <section>
@@ -677,7 +692,7 @@ values, for things like options.<br/><br/>
 And you can use <a href="http://jsfiddle.net">jsfiddle</a> with
 CoffeeScript.
 </aside>
-<p class="pg">18</p></section>
+<p class="pg">19</p></section>
 
 
 
@@ -724,7 +739,7 @@ CoffeeScript.
 <aside>
 It&rsquo;s always good to have a summary slide with your key points.
 </aside>
-<p class="pg">19</p></section>
+<p class="pg">20</p></section>
 
 
 
@@ -758,20 +773,20 @@ I wrote the code in CoffeeScript,
 which is translated to JavaScript but is a better-designed
 language.<br><br>
 
-<a
-href="http://eloquentjavascript.net"><i>Eloquent JavaScript</i></a> is
-a great free book.  The <a
-href="http://pragprog.com/book/tbcoffee/coffeescript"><i>CoffeeScript</i></a>
-book is not free but is also great; you need to learn at least a bit of
-JavaScript first.<br><br>
-
 <a href="http://alignedleft.com/tutorials/d3">Scott
 Murray&rsquo;s D3 tutorials</a> are superb and are a great place to start
 for learning D3; he&rsquo;s since written <a
 href="http://www.amazon.com/exec/obidos/ASIN/1449339735/7210-20">a
 book</a>.<br><br>
+
+<a
+href="http://eloquentjavascript.net"><i>Eloquent JavaScript</i></a> is
+a great free book.  The <a
+href="http://pragprog.com/book/tbcoffee/coffeescript"><i>CoffeeScript</i></a>
+book is not free but is also great; you need to learn at least a bit of
+JavaScript first.
 </aside>
-<p class="pg">20</p></section>
+<p class="pg">21</p></section>
 
 
 
@@ -802,7 +817,7 @@ This is where to find me.<br/><br/>
 
 In particular, you can find all of my papers, talks, and software.
 </aside>
-<p class="pg">21</p></section>
+<p class="pg">22</p></section>
 
 
 
