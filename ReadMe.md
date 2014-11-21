@@ -1,6 +1,6 @@
 ### Talk on &ldquo;Interactive graphics for teaching&rdquo;
 
-These are slides for a talk that I will give at a
+These are slides for a talk that I gave at a
 [Delta Program](http://delta.wisc.edu) [Round Table](http://delta.wisc.edu/events/roundtable.html)
 on 20 Nov 2014.
 
